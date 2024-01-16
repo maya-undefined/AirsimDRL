@@ -61,8 +61,7 @@ class Env:
             # landed = landed or (quad_pos.y_val > 10 and quad_vel.x_val == 0 and quad_vel.y_val == 0 and quad_vel.z_val == 0)
             landed = (quad_vel.x_val == 0 and quad_vel.y_val == 0 and quad_vel.z_val == 0)
             landed = landed or quad_pos.z_val > floorZ
-            collision = collided or landed
-            if collision:
+            if collision := collided or landed:
                 collision_count += 1
             if collision_count > 10:
                 has_collided = True

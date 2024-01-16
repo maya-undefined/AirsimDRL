@@ -6,8 +6,7 @@ from matplotlib import pyplot as plt
 
 
 def smooth(arr, n):
-    end = -(len(arr)%n)
-    if end == 0:
+    if (end := -(len(arr)%n)) == 0:
       end = None
     arr = np.reshape(arr[:end], (-1, n))
     arr = np.mean(arr, axis=1)
