@@ -1,5 +1,5 @@
-import random
 import numpy as np
+import secrets
 
 class SumTree:
     write = 0
@@ -87,7 +87,7 @@ class Memory:
             a = segment * i
             b = a + segment
 
-            s = random.uniform(a, b)
+            s = secrets.SystemRandom().uniform(a, b)
             (idx, p, data) = self.tree.get(s)
             priorities.append(p)
             batch.append(data)
