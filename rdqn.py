@@ -15,7 +15,6 @@ Detail:
 import os
 import csv
 import time
-import random
 import argparse
 from copy import deepcopy
 from collections import deque
@@ -30,6 +29,7 @@ from keras.models import Model
 from PIL import Image
 import cv2
 from airsim_env import Env, ACTION
+import secrets
 
 np.set_printoptions(suppress=True, precision=4)
 agent_name = 'rdqn'
@@ -137,7 +137,7 @@ class RDQNAgent(object):
         return np.argmax(Qs), np.argmax(Qs), Qmax
 
     def train_model(self):
-        batch = random.sample(self.memory, self.batch_size)
+        batch = secrets.SystemRandom().sample(self.memory, self.batch_size)
 
         images = np.zeros([self.batch_size] + self.state_size)
         vels = np.zeros([self.batch_size, self.vel_size])
